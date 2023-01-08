@@ -11,7 +11,7 @@ public:
     virtual long long position();
     virtual void position(long long value)=0;
 };
-class basic_encoder final : encoder {
+class basic_encoder final : public encoder {
     uint8_t m_pin_data, m_pin_clk;
     bool m_pull_up;
     int m_state;
@@ -32,7 +32,7 @@ public:
     
 };
 template<uint8_t PinData, uint8_t PinClk, bool PullUp=false>
-class int_encoder final : encoder {
+class int_encoder final : public encoder {
 public:
     using type = int_encoder;
     constexpr static const uint8_t pin_data = PinData;
